@@ -1,37 +1,5 @@
-interface BrandInfluencerSalesInterface {
-    brandInfluencers: string,
-    total: number
-}
-interface InfluencerInterface {
-    id: number,
-    name: string | null,
-    email: string,
-    commissionPercent: number,
-    promoCode: string
-}
-interface InputInterface {
-    brandInfluencersSales: BrandInfluencerSalesInterface[],
-    influencers: InfluencerInterface[]
-}
-interface InfluencerCommissions {
-    brandInfluencers: string,
-    brand: string,
-    affiliateId: string,
-    commissionPercent: number,
-    totalSales: number,
-    commissionValue: number,
-    name: string | null,
-    email: string,
-    influencerId: number
-}
-interface OutputInterface {
-    isValid: boolean,
-    influencersComissions: InfluencerCommissions[]
-}
-interface InfluencerMapObj {
-    [key: string]: InfluencerInterface
-}
-const inputData: InputInterface = {
+import {influencersComissions} from './OutputInterface'
+const input = {
     "brandInfluencersSales": [
         {
             "brandInfluencers": "good light world-***-gg-rhode",
@@ -147,37 +115,35 @@ const inputData: InputInterface = {
         }
     ]
 };
-const influencerMapObj: InfluencerMapObj = {};
-inputData.influencers.forEach(inf => {
-    if (!influencerMapObj[inf.promoCode]) {
-        influencerMapObj[inf.promoCode] = {...inf}
-    }
+
+/* Feedback: Output is not defined and calculated */
+/* Feedback: Not required files are included in the assignment */
+
+input.brandInfluencersSales.forEach(function(brandObj){
+    // console.log('brandObj', brandObj);
+    const brandInf : string[] = brandObj.brandInfluencers.split('-***-') /* Feedback: good to see the use of TS */
+    // console.log('brandInf',brandInf);
+    const brand:string=brandInf[0]
+    // console.log('brandName',brandName);
+    const affiliateId:string=brandInf[1]
+    // console.log('affiliateId',affiliateId);
+    const promocode =input.influencers.find(function(influencer){
+        // console.log('infuencer', influencer.promoCode);
+      if (influencer.promoCode === affiliateId){
+        const commissionValue:number= influencer.commissionPercent * brandObj.total / 100
+        // console.log('commissionValue',commissionValue);
+      const outputComissions: influencersComissions = {
+        brandInfluencers: brandObj.brandInfluencers,
+        brand,
+        affiliateId,
+        commissionPercent: influencer.commissionPercent,
+        totalSales: brandObj.total,
+        commissionValue,
+        name: influencer.name ? influencer.name : '',
+        email: influencer.email,
+        influencerId: influencer.id
+      }
+console.log('outputComissions',outputComissions);
+      }
+    })
 })
-const output: OutputInterface = {
-    isValid: true,
-    influencersComissions: []
-}
-for(let i = 0 ; i < inputData.brandInfluencersSales.length ; i++) {
-    const bInf = inputData.brandInfluencersSales[i];
-    const brandName = bInf.brandInfluencers.split('-***-')[0]
-    const promoCode = bInf.brandInfluencers.split('-***-')[1];
-    if (promoCode.trim()) { /* It is mathcing with the Saffi's Assignment */
-        if (influencerMapObj[promoCode]) {
-            output.influencersComissions.push({
-                brandInfluencers: bInf.brandInfluencers,
-                brand: brandName,
-                affiliateId: promoCode,
-                commissionPercent: influencerMapObj[promoCode].commissionPercent,
-                totalSales: bInf.total,
-                commissionValue: (bInf.total / 100)* influencerMapObj[promoCode].commissionPercent,
-                email: influencerMapObj[promoCode].email,
-                influencerId: influencerMapObj[promoCode].id,
-                name: influencerMapObj[promoCode].name
-            })
-        } else {
-            output.isValid = false;
-            break;
-        }
-    }
-}
-console.log(output);

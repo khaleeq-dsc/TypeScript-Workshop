@@ -158,10 +158,10 @@ const output: OutputInterface = {
     influencersComissions: []
 }
 for(let i = 0 ; i < inputData.brandInfluencersSales.length ; i++) {
-    const bInf = inputData.brandInfluencersSales[i];
-    const brandName = bInf.brandInfluencers.split('-***-')[0]
-    const promoCode = bInf.brandInfluencers.split('-***-')[1];
-    if (promoCode.trim()) { /* It is mathcing with the Saffi's Assignment */
+    const bInf /* Correct Use of TypeScript: here type should be defined */ = inputData.brandInfluencersSales[i];
+    const brandName /* Correct Use of TypeScript: here type should be defined */ = bInf.brandInfluencers.split('-***-')[0]
+    const promoCode /* Correct Use of TypeScript: here type should be defined */ = bInf.brandInfluencers.split('-***-')[1];
+    if (promoCode.trim()) {
         if (influencerMapObj[promoCode]) {
             output.influencersComissions.push({
                 brandInfluencers: bInf.brandInfluencers,
