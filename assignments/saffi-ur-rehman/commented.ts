@@ -151,11 +151,11 @@ const output: OutputInterface = {
     influencersComissions: []
 }
 for(let i = 0 ; i < inputData.brandInfluencersSales.length ; i++) {
-    const brandInfo = inputData.brandInfluencersSales[i];
-    const brandName = brandInfo.brandInfluencers.split('-***-')[0]
-    const promoCode = brandInfo.brandInfluencers.split('-***-')[1];
+    const brandInfo /* Correct Use of TypeScript: here type should be defined */ = inputData.brandInfluencersSales[i]; 
+    const brandName /* Correct Use of TypeScript: here type should be defined */ = brandInfo.brandInfluencers.split('-***-')[0]
+    const promoCode /* Correct Use of TypeScript: here type should be defined */ = brandInfo.brandInfluencers.split('-***-')[1];
     if (promoCode.trim()) {
-        const influencerData = inputData.influencers.find(infData => infData.promoCode == promoCode)
+        const influencerData /* Correct Use of TypeScript: here type should be defined */ = inputData.influencers.find(infData => infData.promoCode == promoCode)
         if (influencerData) {
             output.influencersComissions.push({
                 brandInfluencers: brandInfo.brandInfluencers,
@@ -169,7 +169,7 @@ for(let i = 0 ; i < inputData.brandInfluencersSales.length ; i++) {
                 name: influencerData.name
             })
         } else {
-            output.isValid = false;
+            output.isValid = false; 
             break;
         }
     }
