@@ -1,4 +1,13 @@
 {
+  "name": "typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "assignment.ts",
+  "scripts": {
+    "start": "nodemon assignment.ts"
+  },
+  "author": "Khaleeq",
+  "license": "ISC",
   "dependencies": {
     "typescript": "^4.8.4"
   }
