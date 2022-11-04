@@ -2,9 +2,9 @@
   "name": "typescript",
   "version": "1.0.0",
   "description": "",
-  "main": "assignment.ts",
+  "main": "assignments\\saffi-ur-rehman\\assignment.ts",
   "scripts": {
-    "start": "nodemon assignment.ts"
+    "start": "nodemon assignments\\saffi-ur-rehman\\assignment.ts"
   },
   "author": "Khaleeq",
   "license": "ISC",
