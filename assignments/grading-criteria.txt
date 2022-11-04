@@ -1,9 +1,12 @@
 Total Marks = 10
 
-Right Output = 3
-Correct Use of TypeScript = 2
-Code Structure = 2
-Readability = 1.5
-Efficiency = 1.5
-
-
+1 - Right Output = 3
+        Output should match the required-output.js
+2 - Correct Use of TypeScript = 2
+        TypeScript should be used to reduce errors and improve intellisense
+3 - Code Structure = 2
+        Interfaces should be kept in a separate directory
+4 - Readability = 1.5
+        Code should be easy to read and understand
+5 - Efficiency = 1.5
+        Unnecessary iterations should be avoided

@@ -148,5 +148,5 @@ input.brandInfluencersSales.forEach(brandObj=>{
 
 })
 
-
+output.isValid = output.influencersComissions.length > 0 ? true : false
 console.log(output)

@@ -1,5 +1,5 @@
 const requiredOutput = {
-  isValid: false,
+  isValid: true,
   influencersComissions: [
     {
       brandInfluencers: 'good light world-***-gg-rhode',
