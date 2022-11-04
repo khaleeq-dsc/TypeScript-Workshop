@@ -1,8 +1,8 @@
 Total Marks = 10
 
 Right Output = 3
-Code Structure = 2
 Correct Use of TypeScript = 2
+Code Structure = 2
 Readability = 1.5
 Efficiency = 1.5
 
